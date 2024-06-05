@@ -10,8 +10,11 @@ public class CharacterController : MonoBehaviour
     public Vector2 MaxSpeed;
     public float JumpStrength;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool IsGrounded;
     public bool canChangeDirection;
+    public bool QueuedDirectionSwap;
+    private bool justJumped;
+    public bool moveDirectionLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,29 +35,50 @@ public class CharacterController : MonoBehaviour
         speed.y = Mathf.Clamp(rb.velocity.y, -MaxSpeed.y, MaxSpeed.y);
         rb.velocity = speed;
     }
-    private void OnJump()
+    private void OnJumpLeft()
     {
-        if (!isGrounded) return;
+        Acceleration = -Mathf.Abs(Acceleration);
+        rb.AddForce(Vector2.up * JumpStrength);
+    }
+    private void OnJumpRight()
+    {
+        Acceleration = Mathf.Abs(Acceleration);
         rb.AddForce(Vector2.up * JumpStrength);
     }
 
-    public void InvertMove()
+    private void OnMoveLeft()
     {
-        if (!canChangeDirection) return;
-        print("Swapped direction");
-        Acceleration *= -1;
+        moveDirectionLeft = true;
+        if (IsGrounded) EnforceMoveDirection();
     }
+    private void OnMoveRight()
+    {
+        moveDirectionLeft = false;
+        if(IsGrounded) EnforceMoveDirection();
+    }
+
+    public void EnforceMoveDirection()
+    {
+        if (moveDirectionLeft)
+        {
+            Acceleration = -Mathf.Abs(Acceleration);
+        }
+        if(!moveDirectionLeft) Acceleration = Mathf.Abs(Acceleration);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == gameObject.name || collision.isTrigger) return;
-        isGrounded = true;
-        InvertMove();
+        IsGrounded = true;
+        EnforceMoveDirection();
+        print("Entered Ground");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == gameObject.name || collision.isTrigger) return;
-        isGrounded = false;
-        InvertMove();
+        IsGrounded = false;
+        print("Left Ground");
+        
     }
 }
