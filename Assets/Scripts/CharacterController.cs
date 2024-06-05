@@ -37,11 +37,13 @@ public class CharacterController : MonoBehaviour
     }
     private void OnJumpLeft()
     {
+        if (!IsGrounded) return;
         Acceleration = -Mathf.Abs(Acceleration);
         rb.AddForce(Vector2.up * JumpStrength);
     }
     private void OnJumpRight()
     {
+        if (!IsGrounded) return;
         Acceleration = Mathf.Abs(Acceleration);
         rb.AddForce(Vector2.up * JumpStrength);
     }
