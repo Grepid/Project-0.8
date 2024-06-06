@@ -10,6 +10,8 @@ public class CharacterController : MonoBehaviour
     public Vector2 MaxSpeed;
     public float JumpStrength;
     private Rigidbody2D rb;
+    public float gravityNormal;
+    public float gravityWhenFalling;
     public bool IsGrounded;
     public bool canChangeDirection;
     public bool QueuedDirectionSwap;
@@ -25,8 +27,16 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         rb.velocity = (new Vector2(Acceleration*Time.deltaTime, rb.velocity.y));
-
+        if (rb.velocity.y < -1)
+        {
+            rb.gravityScale = gravityWhenFalling;
+        }
+        else
+        {
+            rb.gravityScale = gravityNormal;
+        }
         EnforceVelocity();
+        print(rb.gravityScale);
     }
     private void EnforceVelocity()
     {
@@ -74,13 +84,11 @@ public class CharacterController : MonoBehaviour
         if (collision.name == gameObject.name || collision.isTrigger) return;
         IsGrounded = true;
         EnforceMoveDirection();
-        print("Entered Ground");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == gameObject.name || collision.isTrigger) return;
         IsGrounded = false;
-        print("Left Ground");
         
     }
 }

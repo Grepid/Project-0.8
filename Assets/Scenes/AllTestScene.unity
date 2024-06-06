@@ -676,8 +676,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 10000
-  MaxSpeed: {x: 10, y: 10}
-  JumpStrength: 300
+  MaxSpeed: {x: 7.5, y: 20}
+  JumpStrength: 750
+  gravityNormal: 5
+  gravityWhenFalling: 10
   IsGrounded: 0
   canChangeDirection: 1
   QueuedDirectionSwap: 0
