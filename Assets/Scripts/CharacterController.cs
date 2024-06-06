@@ -35,28 +35,17 @@ public class CharacterController : MonoBehaviour
         speed.y = Mathf.Clamp(rb.velocity.y, -MaxSpeed.y, MaxSpeed.y);
         rb.velocity = speed;
     }
-    private void OnJumpLeft()
+    private void OnJump()
     {
         if (!IsGrounded) return;
-        Acceleration = -Mathf.Abs(Acceleration);
-        rb.AddForce(Vector2.up * JumpStrength);
-    }
-    private void OnJumpRight()
-    {
-        if (!IsGrounded) return;
-        Acceleration = Mathf.Abs(Acceleration);
+        Acceleration *= -1;
         rb.AddForce(Vector2.up * JumpStrength);
     }
 
-    private void OnMoveLeft()
+    private void OnSwapDirection()
     {
-        moveDirectionLeft = true;
+        moveDirectionLeft = !moveDirectionLeft;
         if (IsGrounded) EnforceMoveDirection();
-    }
-    private void OnMoveRight()
-    {
-        moveDirectionLeft = false;
-        if(IsGrounded) EnforceMoveDirection();
     }
 
     public void EnforceMoveDirection()

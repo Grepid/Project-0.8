@@ -6,16 +6,7 @@
             "id": "f4c16566-6519-4672-8c24-74dcccb43274",
             "actions": [
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "e8f935d1-4b7a-4301-a936-dd4f496cfb86",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveLeft",
+                    "name": "SwapDirection",
                     "type": "Button",
                     "id": "9411e78a-9306-4bf9-8cbb-9bdeb30b92ea",
                     "expectedControlType": "Button",
@@ -24,25 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveRight",
-                    "type": "Button",
-                    "id": "cffed5a7-1a66-4b6e-8aaa-176ea9c3d01d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "JumpLeft",
-                    "type": "Button",
-                    "id": "9fba5406-1d5c-43ad-b999-b4545c11bd3a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "JumpRight",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "6c885e5c-6ef0-4274-a864-e914a5301c5b",
                     "expectedControlType": "Button",
@@ -54,56 +27,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "c53c0d89-fa9c-46f8-a8f7-848bcb8fa07a",
-                    "path": "<Touchscreen>/primaryTouch/indirectTouch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6de51593-7be5-41fb-9098-6be00193db14",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "568c2f45-8bf7-4de6-b27c-56cf86913fab",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8adf9561-acf8-418e-ba5a-431d3df6a736",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f58da945-db1b-498d-9482-91d17f2e0ce8",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JumpLeft",
+                    "action": "SwapDirection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -114,7 +43,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JumpRight",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
