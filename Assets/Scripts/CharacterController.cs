@@ -13,9 +13,6 @@ public class CharacterController : MonoBehaviour
     public float gravityNormal;
     public float gravityWhenFalling;
     public bool IsGrounded;
-    public bool canChangeDirection;
-    public bool QueuedDirectionSwap;
-    private bool justJumped;
     public bool moveDirectionLeft;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +33,6 @@ public class CharacterController : MonoBehaviour
             rb.gravityScale = gravityNormal;
         }
         EnforceVelocity();
-        print(rb.gravityScale);
     }
     private void EnforceVelocity()
     {
